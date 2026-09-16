@@ -27,7 +27,15 @@
         display: block;
         white-space: nowrap;
       }
-      .hero-lead { max-width: 650px; }
+      .hero-lead { max-width: 760px; }
+      .hero-lead-line { display: block; }
+    }
+    @media (min-width: 1280px) {
+      .hero-lead {
+        font-size: clamp(.82rem, .9vw, .9rem);
+        line-height: 1.75;
+      }
+      .hero-lead-line { white-space: nowrap; }
     }
   </style>
 </head>
@@ -66,7 +74,7 @@
         <div class="hero-copy">
           <p class="eyebrow"><span></span> Destaque Local <b>| Sites</b></p>
           <h1 id="hero-title"><span class="hero-title-line">Site Profissional Para</span><em class="hero-title-line">Negócio Local.</em></h1>
-          <p class="hero-lead">Dê ao seu trabalho uma presença mais profissional na internet. Apresente seus serviços com clareza e facilite o contato com seus clientes. Envie as informações do seu negócio e receba a primeira versão do seu site para avaliar antes de pagar.</p>
+          <p class="hero-lead"><span class="hero-lead-line">Dê ao seu trabalho uma presença mais profissional na internet.</span><span class="hero-lead-line">Apresente seus serviços com clareza e facilite o contato com seus clientes.</span><span class="hero-lead-line">Envie as informações do seu negócio e receba a primeira versão do seu site para avaliar antes de pagar.</span></p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#contato">Falar com a Destaque Local <span aria-hidden="true">↗</span></a>
