@@ -1,0 +1,112 @@
+:root {
+  /* Destaque Local — typography system */
+  --fs-hero: clamp(3.55rem, 4.2vw, 4.35rem);          /* ~57–70px */
+  --fs-section-title: clamp(2.375rem, 3.2vw, 3.5rem); /* 38–56px */
+  --fs-card-title: clamp(1.375rem, 1.55vw, 1.75rem);  /* 22–28px */
+  --fs-lead: clamp(0.98rem, 1.12vw, 1.08rem);         /* ~16–17px; hero approved scale */
+  --fs-body-lg: clamp(1.0625rem, 1.1vw, 1.125rem);    /* 17–18px */
+  --fs-body: 1rem;                                      /* 16px */
+  --fs-small: 0.875rem;                                 /* 14px */
+  --fs-ui: 0.6875rem;                                   /* 11px */
+  --fs-eyebrow: 0.625rem;                               /* 10px; hero approved scale */
+  --fs-micro: 0.625rem;                                 /* 10px */
+
+  --lh-hero: 0.98;
+  --lh-section-title: 1.05;
+  --lh-card-title: 1.15;
+  --lh-lead: 1.66;
+  --lh-body: 1.65;
+  --lh-small: 1.5;
+
+  --ls-hero: -0.064em;
+  --ls-section-title: -0.045em;
+  --ls-card-title: -0.025em;
+  --ls-eyebrow: 0.17em;
+  --ls-ui: 0.045em;
+}
+
+/* Semantic type roles. New sections should use these roles instead of ad-hoc sizes. */
+h1,
+.type-hero {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: var(--ls-hero);
+  font-weight: 800;
+}
+
+h2,
+.section-title {
+  font-size: var(--fs-section-title);
+  line-height: var(--lh-section-title);
+  letter-spacing: var(--ls-section-title);
+  font-weight: 800;
+}
+
+h3,
+.card-title {
+  font-size: var(--fs-card-title);
+  line-height: var(--lh-card-title);
+  letter-spacing: var(--ls-card-title);
+  font-weight: 750;
+}
+
+.eyebrow,
+.section-eyebrow {
+  font-size: var(--fs-eyebrow);
+  line-height: 1.2;
+  letter-spacing: var(--ls-eyebrow);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero-lead,
+.section-subtitle {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+}
+
+.body-large {
+  font-size: var(--fs-body-lg);
+  line-height: 1.6;
+}
+
+.body-copy {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.small-copy {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+}
+
+.primary-nav > a:not(.nav-cta),
+.nav-cta,
+.button {
+  font-size: var(--fs-ui);
+  letter-spacing: var(--ls-ui);
+}
+
+.hero-proof,
+.micro-copy {
+  font-size: var(--fs-micro);
+  line-height: 1.4;
+}
+
+/* Keep long reading text comfortable; headings may be wider by design. */
+.body-copy,
+.body-large,
+.section-subtitle {
+  max-width: 70ch;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --fs-hero: clamp(2.75rem, 12.5vw, 4.25rem);
+    --fs-section-title: clamp(2rem, 9vw, 2.75rem);
+    --fs-card-title: clamp(1.25rem, 5.8vw, 1.5rem);
+    --fs-lead: 0.875rem;
+    --fs-eyebrow: 0.5625rem;
+    --fs-micro: 0.5625rem;
+  }
+}
