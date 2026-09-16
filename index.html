@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="typography.css">
   <style>
     @media (min-width: 1061px) {
       .hero-shell {
@@ -21,7 +22,7 @@
       .hero-copy { max-width: 760px; }
       h1 {
         max-width: 760px;
-        font-size: clamp(3.55rem, 4.2vw, 4.35rem);
+        font-size: var(--fs-hero);
       }
       .hero-title-line {
         display: block;
@@ -30,10 +31,10 @@
       .hero-lead { max-width: 760px; }
       .hero-lead-line { display: block; }
     }
-    @media (min-width: 1280px) {
+    @media (min-width: 1440px) {
       .hero-lead {
-        font-size: clamp(.82rem, .9vw, .9rem);
-        line-height: 1.75;
+        max-width: 860px;
+        width: 860px;
       }
       .hero-lead-line { white-space: nowrap; }
     }
