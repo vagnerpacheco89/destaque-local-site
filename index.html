@@ -12,6 +12,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    @media (min-width: 1061px) {
+      .hero-shell {
+        grid-template-columns: minmax(0, 1.34fr) minmax(390px, .66fr);
+        gap: clamp(28px, 3vw, 46px);
+      }
+      .hero-copy { max-width: 760px; }
+      h1 {
+        max-width: 760px;
+        font-size: clamp(3.55rem, 4.2vw, 4.35rem);
+      }
+      .hero-title-line {
+        display: block;
+        white-space: nowrap;
+      }
+      .hero-lead { max-width: 650px; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" data-header>
@@ -47,7 +65,7 @@
       <div class="shell hero-shell">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> Destaque Local <b>| Sites</b></p>
-          <h1 id="hero-title">Site profissional para<br><em>prestadores de serviço.</em></h1>
+          <h1 id="hero-title"><span class="hero-title-line">Site profissional para</span><em class="hero-title-line">prestadores de serviço.</em></h1>
           <p class="hero-lead">Dê ao seu trabalho uma presença mais profissional na internet. Apresente seus serviços com clareza e facilite o contato com seus clientes. Envie as informações do seu negócio e receba a primeira versão do seu site para avaliar antes de pagar.</p>
 
           <div class="hero-actions">
