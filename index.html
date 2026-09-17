@@ -38,6 +38,75 @@
       }
       .hero-lead-line { white-space: nowrap; }
     }
+
+    /* Hero trust chips: fatos rápidos, sem competir com os CTAs. */
+    .hero-proof {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      color: #d1d1d1;
+    }
+    .proof-chip {
+      min-height: 38px;
+      padding: 6px 12px 6px 7px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018)),
+        rgba(8,8,8,.78);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 10px 28px rgba(0,0,0,.16);
+      backdrop-filter: blur(8px);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: .005em;
+      white-space: nowrap;
+    }
+    .proof-chip::before { content: none !important; }
+    .proof-icon {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      display: grid !important;
+      place-items: center;
+      gap: 0 !important;
+      border: 1px solid rgba(255,75,0,.32);
+      border-radius: 8px;
+      background: rgba(255,75,0,.09);
+      color: var(--orange);
+      box-shadow: inset 0 0 18px rgba(255,75,0,.035);
+    }
+    .proof-icon::before { content: none !important; }
+    .proof-icon svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 1060px) {
+      .proof-chip { white-space: normal; }
+    }
+    @media (max-width: 700px) {
+      .hero-proof {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .proof-chip {
+        width: fit-content;
+        max-width: 100%;
+        min-height: 40px;
+        font-size: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -82,10 +151,25 @@
             <a class="button button-secondary" href="#modelos">Ver os modelos <span aria-hidden="true">↓</span></a>
           </div>
 
-          <div class="hero-proof" aria-label="Destaques da oferta">
-            <span>Primeira versão antes de pagar</span>
-            <span>3x R$120 sem juros</span>
-            <span>Domínio próprio quando necessário</span>
+          <div class="hero-proof" aria-label="Destaques do serviço">
+            <div class="proof-chip">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>
+              </span>
+              Veja a primeira versão antes de pagar
+            </div>
+            <div class="proof-chip">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.2 2.3 3.3 5 3.3 8S14.2 17.7 12 20c-2.2-2.3-3.3-5-3.3-8S9.8 6.3 12 4Z"/></svg>
+              </span>
+              Seu endereço próprio na internet
+            </div>
+            <div class="proof-chip">
+              <span class="proof-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8.5 8A8 8 0 1 1 20 11.5Z"/><path d="m7 20 1.2-3.1"/><path d="M9.4 8.7c.4 2.5 2.1 4.2 4.6 4.6"/></svg>
+              </span>
+              WhatsApp direto no seu site
+            </div>
           </div>
         </div>
 
