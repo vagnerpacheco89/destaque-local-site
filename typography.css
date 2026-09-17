@@ -100,6 +100,27 @@ h3,
   max-width: 70ch;
 }
 
+/* Hero eyebrow — branded chip test. */
+.hero .eyebrow {
+  padding: 8px 14px;
+  border: 1px solid rgba(5,5,5,.12);
+  border-radius: 999px;
+  background: var(--orange);
+  color: #050505;
+  gap: 9px;
+  box-shadow: 0 10px 26px rgba(255,75,0,.14);
+}
+.hero .eyebrow b {
+  color: rgba(5,5,5,.72);
+  font-weight: 800;
+}
+.hero .eyebrow span {
+  width: 22px;
+  height: 2px;
+  background: #050505;
+  box-shadow: none;
+}
+
 @media (max-width: 700px) {
   :root {
     --fs-hero: clamp(2.75rem, 12.5vw, 4.25rem);
