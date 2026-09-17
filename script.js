@@ -33,76 +33,106 @@ if (menuToggle && menu) {
   });
 }
 
-/* Hero — mapa detalhado ocupando todo o fundo, com leitura preservada à esquerda. */
+/* Hero — mapa urbano REAL em dark mode. O mapa começa abaixo da navbar. */
 const hero = document.querySelector('.hero');
 const heroVisual = document.querySelector('.hero-visual');
 
 if (hero && heroVisual) {
-  const heroMapStyles = document.createElement('style');
-  heroMapStyles.textContent = `
-    .hero.hero-map-background {
-      background:
-        url('assets/hero-map-dark.svg') center center / cover no-repeat !important;
+  const mapStyles = document.createElement('style');
+  mapStyles.textContent = `
+    .site-header {
+      background: #050505;
+      border-bottom-color: rgba(255,255,255,.055);
     }
 
-    .hero.hero-map-background::before {
-      content: '' !important;
-      position: absolute !important;
-      inset: 0 !important;
-      width: auto !important;
-      height: auto !important;
-      right: auto !important;
-      top: auto !important;
-      z-index: 1 !important;
-      border: 0 !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
+    .hero.hero-real-map {
+      background: #050505 !important;
+      isolation: isolate;
+    }
+
+    .hero.hero-real-map::before,
+    .hero.hero-real-map::after {
+      content: none !important;
+    }
+
+    .hero-real-map .hero-grid-overlay,
+    .hero-real-map .hero-route {
+      display: none !important;
+    }
+
+    .hero-map-live {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      right: 0;
+      top: 82px;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: #101010;
+    }
+
+    .hero-map-live .leaflet-container {
+      width: 100%;
+      height: 100%;
+      background: #101010;
+      pointer-events: none !important;
+    }
+
+    .hero-map-live .leaflet-tile-pane {
+      opacity: .96;
+    }
+
+    .hero-map-shade {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      top: 82px;
+      bottom: 0;
       pointer-events: none;
       background:
         linear-gradient(
           90deg,
-          rgba(0,0,0,.985) 0%,
-          rgba(0,0,0,.975) 24%,
-          rgba(0,0,0,.93) 42%,
-          rgba(0,0,0,.78) 56%,
-          rgba(0,0,0,.52) 70%,
-          rgba(0,0,0,.27) 100%
+          rgba(0,0,0,.995) 0%,
+          rgba(0,0,0,.99) 20%,
+          rgba(0,0,0,.965) 36%,
+          rgba(0,0,0,.90) 49%,
+          rgba(0,0,0,.68) 61%,
+          rgba(0,0,0,.36) 75%,
+          rgba(0,0,0,.16) 100%
         ),
-        radial-gradient(circle at 78% 48%, rgba(255,75,0,.10), transparent 24%);
+        linear-gradient(180deg, rgba(0,0,0,.12), transparent 25%, transparent 72%, rgba(0,0,0,.22));
     }
 
-    .hero.hero-map-background::after {
-      content: '';
+    .hero-map-orange-glow {
       position: absolute;
-      inset: 0;
       z-index: 1;
+      right: 4%;
+      top: 30%;
+      width: 42vw;
+      height: 50vh;
       pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.20), transparent 26%, transparent 72%, rgba(0,0,0,.30)),
-        radial-gradient(circle at 82% 50%, rgba(255,75,0,.08), transparent 20%);
+      background: radial-gradient(circle, rgba(255,75,0,.075), transparent 64%);
+      filter: blur(8px);
     }
 
-    .hero.hero-map-background .hero-grid-overlay,
-    .hero.hero-map-background .hero-route {
-      display: none !important;
-    }
-
-    .hero.hero-map-background .hero-shell {
+    .hero-real-map .hero-shell {
       position: relative;
       z-index: 2;
     }
 
-    .hero.hero-map-background .hero-copy {
+    .hero-real-map .hero-copy {
       position: relative;
       z-index: 3;
     }
 
-    .hero.hero-map-background .hero-visual {
+    .hero-real-map .hero-visual {
       position: relative;
+      z-index: 3;
       min-height: 470px;
       display: grid;
       place-items: center;
-      isolation: isolate;
       pointer-events: none;
     }
 
@@ -111,8 +141,8 @@ if (hero && heroVisual) {
       width: 92px;
       height: 116px;
       color: var(--orange);
-      transform: translateY(-4%);
-      filter: drop-shadow(0 18px 28px rgba(255,75,0,.30));
+      transform: translate(11%, -2%);
+      filter: drop-shadow(0 20px 32px rgba(255,75,0,.34));
     }
 
     .hero-location-marker::before {
@@ -121,22 +151,22 @@ if (hero && heroVisual) {
       z-index: -1;
       left: 50%;
       top: 46%;
-      width: 190px;
-      height: 190px;
+      width: 174px;
+      height: 174px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      border: 1px solid rgba(255,75,0,.23);
+      border: 1px solid rgba(255,75,0,.22);
       box-shadow:
-        0 0 0 44px rgba(255,75,0,.035),
-        0 0 0 88px rgba(255,75,0,.015);
+        0 0 0 42px rgba(255,75,0,.026),
+        0 0 0 82px rgba(255,75,0,.012);
     }
 
     .hero-location-marker::after {
       content: '';
       position: absolute;
       left: 50%;
-      bottom: -16px;
-      width: 72px;
+      bottom: -15px;
+      width: 70px;
       height: 18px;
       transform: translateX(-50%);
       border-radius: 50%;
@@ -150,24 +180,39 @@ if (hero && heroVisual) {
       height: 100%;
     }
 
+    .hero-map-attribution {
+      position: absolute;
+      z-index: 4;
+      right: 12px;
+      bottom: 8px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      background: rgba(0,0,0,.54);
+      color: rgba(255,255,255,.48);
+      font-size: 7px;
+      line-height: 1;
+      letter-spacing: .02em;
+      pointer-events: auto;
+    }
+
+    .hero-map-attribution a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     @media (max-width: 1060px) {
-      .hero.hero-map-background::before {
+      .hero-map-shade {
         background:
           linear-gradient(
             180deg,
-            rgba(0,0,0,.97) 0%,
-            rgba(0,0,0,.91) 47%,
-            rgba(0,0,0,.58) 74%,
-            rgba(0,0,0,.34) 100%
-          ),
-          radial-gradient(circle at 50% 82%, rgba(255,75,0,.08), transparent 22%);
+            rgba(0,0,0,.96) 0%,
+            rgba(0,0,0,.90) 45%,
+            rgba(0,0,0,.58) 70%,
+            rgba(0,0,0,.28) 100%
+          );
       }
 
-      .hero.hero-map-background {
-        background-position: 62% center !important;
-      }
-
-      .hero.hero-map-background .hero-visual {
+      .hero-real-map .hero-visual {
         min-height: 320px;
       }
 
@@ -178,21 +223,49 @@ if (hero && heroVisual) {
     }
 
     @media (max-width: 700px) {
-      .hero.hero-map-background {
-        background-position: 68% center !important;
+      .hero-map-live,
+      .hero-map-shade {
+        top: 72px;
+      }
+
+      .hero-map-attribution {
+        font-size: 6px;
       }
 
       .hero-location-marker::before {
-        width: 130px;
-        height: 130px;
-        box-shadow: 0 0 0 32px rgba(255,75,0,.026);
+        width: 128px;
+        height: 128px;
+        box-shadow: 0 0 0 30px rgba(255,75,0,.024);
       }
     }
   `;
-  document.head.appendChild(heroMapStyles);
+  document.head.appendChild(mapStyles);
 
-  hero.classList.add('hero-map-background');
-  heroVisual.setAttribute('aria-label', 'Mapa detalhado representando a presença local do negócio');
+  hero.classList.add('hero-real-map');
+
+  const mapLayer = document.createElement('div');
+  mapLayer.className = 'hero-map-live';
+  mapLayer.setAttribute('aria-hidden', 'true');
+  mapLayer.innerHTML = '<div id="hero-real-map-canvas"></div>';
+
+  const shade = document.createElement('div');
+  shade.className = 'hero-map-shade';
+  shade.setAttribute('aria-hidden', 'true');
+
+  const glow = document.createElement('div');
+  glow.className = 'hero-map-orange-glow';
+  glow.setAttribute('aria-hidden', 'true');
+
+  const attribution = document.createElement('div');
+  attribution.className = 'hero-map-attribution';
+  attribution.innerHTML = '<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" rel="noopener">© CARTO</a>';
+
+  hero.prepend(mapLayer);
+  hero.appendChild(shade);
+  hero.appendChild(glow);
+  hero.appendChild(attribution);
+
+  heroVisual.setAttribute('aria-label', 'Mapa urbano real representando a presença local do negócio');
   heroVisual.innerHTML = `
     <div class="hero-location-marker" aria-hidden="true">
       <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
@@ -201,4 +274,62 @@ if (hero && heroVisual) {
       </svg>
     </div>
   `;
+
+  const loadLeaflet = () => {
+    if (window.L) {
+      initHeroMap();
+      return;
+    }
+
+    if (!document.querySelector('link[data-leaflet-css]')) {
+      const leafletCss = document.createElement('link');
+      leafletCss.rel = 'stylesheet';
+      leafletCss.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      leafletCss.dataset.leafletCss = 'true';
+      document.head.appendChild(leafletCss);
+    }
+
+    const leafletScript = document.createElement('script');
+    leafletScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    leafletScript.defer = true;
+    leafletScript.onload = initHeroMap;
+    document.head.appendChild(leafletScript);
+  };
+
+  function initHeroMap() {
+    const canvas = document.getElementById('hero-real-map-canvas');
+    if (!canvas || !window.L || canvas.dataset.ready === 'true') return;
+    canvas.dataset.ready = 'true';
+
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+
+    const realMap = L.map(canvas, {
+      zoomControl: false,
+      attributionControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      touchZoom: false,
+      zoomSnap: 0.25,
+      fadeAnimation: true,
+      markerZoomAnimation: false
+    });
+
+    /* Centro urbano real apenas como base visual; sem alegar endereço ou área atendida. */
+    realMap.setView([-23.5505, -46.6333], 14.25);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 20,
+      minZoom: 3,
+      detectRetina: true
+    }).addTo(realMap);
+
+    window.addEventListener('resize', () => realMap.invalidateSize({ pan: false }), { passive: true });
+  }
+
+  loadLeaflet();
 }
