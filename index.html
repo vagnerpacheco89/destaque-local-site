@@ -103,6 +103,17 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+    .proof-icon--eye svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 1.75;
+    }
+    .proof-icon--whatsapp svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+      stroke: none;
+    }
 
     /* Ritmo vertical da Hero no desktop: mais respiro entre as camadas. */
     @media (min-width: 701px) {
@@ -179,8 +190,8 @@
 
           <div class="hero-proof" aria-label="Destaques do serviço">
             <div class="proof-chip">
-              <span class="proof-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>
+              <span class="proof-icon proof-icon--eye" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.5 5.5-9.5 5.5S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
               </span>
               Veja a primeira versão antes de pagar
             </div>
@@ -191,8 +202,8 @@
               Seu endereço próprio na internet
             </div>
             <div class="proof-chip">
-              <span class="proof-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8.5 8A8 8 0 1 1 20 11.5Z"/><path d="m7 20 1.2-3.1"/><path d="M9.4 8.7c.4 2.5 2.1 4.2 4.6 4.6"/></svg>
+              <span class="proof-icon proof-icon--whatsapp" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2a9.84 9.84 0 0 0-8.43 14.92L2 22l5.22-1.54A9.96 9.96 0 1 0 12.04 2Zm5.8 14.08c-.24.68-1.2 1.25-1.89 1.42-.5.12-1.16.21-3.36-.7-2.82-1.17-4.64-4.04-4.78-4.23-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.66.5.24.58.82 2 .89 2.15.07.14.12.31.02.49-.1.18-.14.29-.29.45-.14.17-.31.37-.44.5-.14.14-.29.3-.12.59.17.29.76 1.25 1.64 2.03 1.12 1 2.07 1.31 2.36 1.46.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.65-.14.26.1 1.67.79 1.96.94.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
               </span>
               WhatsApp direto no seu site
             </div>
