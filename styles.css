@@ -528,3 +528,53 @@ h1 em { color: var(--orange); font-style: normal; }
     animation-duration: .01ms !important;
   }
 }
+
+
+/* Hero — mapa urbano full-resolution */
+.hero {
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.98) 0%,
+      rgba(0,0,0,.94) 24%,
+      rgba(0,0,0,.79) 42%,
+      rgba(0,0,0,.38) 60%,
+      rgba(0,0,0,.10) 78%,
+      rgba(0,0,0,.04) 100%
+    ),
+    linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.26) 100%),
+    url("assets/hero-map-premium-hq.webp") center center / cover no-repeat;
+}
+
+.hero::before,
+.hero-grid-overlay,
+.hero-route,
+.hero-visual {
+  display: none;
+}
+
+.hero-shell {
+  grid-template-columns: minmax(0, 680px);
+  gap: 0;
+  justify-content: start;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    background:
+      linear-gradient(90deg,
+        rgba(0,0,0,.97) 0%,
+        rgba(0,0,0,.91) 52%,
+        rgba(0,0,0,.66) 100%
+      ),
+      linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.38) 100%),
+      url("assets/hero-map-premium-hq.webp") 64% center / cover no-repeat;
+  }
+
+  .hero-shell {
+    grid-template-columns: 1fr;
+  }
+}
