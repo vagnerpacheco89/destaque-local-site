@@ -1033,3 +1033,24 @@ h1 em { color: var(--orange); font-style: normal; }
     font-size: 9.5px;
   }
 }
+
+
+/* Wordmark — alinhamento óptico pela baseline */
+.brand-wordmark {
+  align-items: baseline;
+}
+
+.brand-local {
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+  .brand-wordmark {
+    align-items: baseline;
+  }
+
+  .brand-local {
+    transform: translateY(-1px);
+  }
+}
