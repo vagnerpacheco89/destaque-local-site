@@ -134,7 +134,7 @@ if (hero && heroVisual) {
       width: 92px;
       height: 116px;
       color: var(--orange);
-      transform: translate(10%, -2%);
+      transform: translate(10%, -20%);
       filter: drop-shadow(0 20px 32px rgba(255,75,0,.34));
     }
 
@@ -200,6 +200,10 @@ if (hero && heroVisual) {
     }
 
     @media (max-width: 700px) {
+      .hero-location-marker {
+        transform: translate(10%, -2%);
+      }
+
       .hero-map-photo {
         top: 0;
         background-position: 68% center;
