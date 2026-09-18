@@ -69,7 +69,7 @@ if (hero && heroVisual) {
       bottom: 0;
       pointer-events: none;
       background:
-        url('assets/hero-map-dark.svg') center center / cover no-repeat,
+        url('assets/hero-map-premium-hq.webp') center center / cover no-repeat,
         #080808;
     }
 
