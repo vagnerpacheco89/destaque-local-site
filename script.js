@@ -40,7 +40,8 @@ const heroVisual = document.querySelector('.hero-visual');
 if (hero && heroVisual) {
   const mapStyles = document.createElement('style');
   mapStyles.textContent = `
-    .site-header {
+    .site-header,
+    .site-header.is-scrolled {
       background: #050505;
       border-bottom-color: rgba(255,255,255,.055);
     }
@@ -65,7 +66,7 @@ if (hero && heroVisual) {
       z-index: 0;
       left: 0;
       right: 0;
-      top: 82px;
+      top: 0;
       bottom: 0;
       pointer-events: none;
       background:
@@ -200,7 +201,7 @@ if (hero && heroVisual) {
 
     @media (max-width: 700px) {
       .hero-map-photo {
-        top: 72px;
+        top: 0;
         background-position: 70% center;
       }
 
