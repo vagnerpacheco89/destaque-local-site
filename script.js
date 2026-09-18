@@ -202,7 +202,25 @@ if (hero && heroVisual) {
     @media (max-width: 700px) {
       .hero-map-photo {
         top: 0;
-        background-position: 70% center;
+        background-position: 68% center;
+      }
+
+      .hero-map-photo::after {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0,0,0,.965) 0%,
+            rgba(0,0,0,.93) 26%,
+            rgba(0,0,0,.84) 54%,
+            rgba(0,0,0,.62) 76%,
+            rgba(0,0,0,.40) 100%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(0,0,0,.72) 0%,
+            rgba(0,0,0,.50) 58%,
+            rgba(0,0,0,.22) 100%
+          );
       }
 
       .hero-location-marker::before {
