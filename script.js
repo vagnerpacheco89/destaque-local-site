@@ -42,8 +42,8 @@ if (hero && heroVisual) {
   mapStyles.textContent = `
     .site-header,
     .site-header.is-scrolled {
-      background: #050505;
-      border-bottom-color: rgba(255,255,255,.055);
+      background: rgba(5,5,5,.97);
+      border-bottom-color: rgba(255,255,255,.075);
     }
 
     .hero.hero-map-asset {
