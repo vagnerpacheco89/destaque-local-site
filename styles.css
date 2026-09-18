@@ -1062,3 +1062,36 @@ h1 em { color: var(--orange); font-style: normal; }
   border-radius: 0;
   box-shadow: none;
 }
+
+
+/* Wordmark — escala e peso final */
+.brand-name {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.brand-local {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+@media (max-width: 700px) {
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .brand-local {
+    font-size: 11px;
+    font-weight: 900;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-local {
+    font-size: 10px;
+  }
+}
