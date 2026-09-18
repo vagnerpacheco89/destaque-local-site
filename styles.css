@@ -1054,3 +1054,11 @@ h1 em { color: var(--orange); font-style: normal; }
     transform: translateY(-1px);
   }
 }
+
+
+/* Logo — símbolo laranja oficial */
+.brand-mark {
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+}
