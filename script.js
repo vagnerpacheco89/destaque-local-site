@@ -134,7 +134,7 @@ if (hero && heroVisual) {
       width: 92px;
       height: 116px;
       color: var(--orange);
-      transform: translate(10%, -20%);
+      transform: translate(10%, -32%);
       filter: drop-shadow(0 20px 32px rgba(255,75,0,.34));
     }
 
