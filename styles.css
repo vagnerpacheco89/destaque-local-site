@@ -961,3 +961,16 @@ h1 em { color: var(--orange); font-style: normal; }
     font-size: 14px;
   }
 }
+
+
+/* Wordmark — LOCAL centralizado sob Destaque */
+.brand-wordmark {
+  justify-items: center;
+}
+
+.brand-local {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-left: .36em;
+}
