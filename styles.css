@@ -2039,3 +2039,38 @@ h1 em { color: var(--orange); font-style: normal; }
     font-size: 9.5px;
   }
 }
+
+
+/* Audience heading — topo mais compacto e título em uma linha */
+@media (min-width: 801px) {
+  .audience-section {
+    padding-top: 64px;
+  }
+
+  .audience-heading {
+    max-width: none;
+    margin-bottom: 46px;
+  }
+
+  .audience-heading h2 {
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(2.7rem, 3.15vw, 3.65rem);
+    line-height: 1;
+    letter-spacing: -.048em;
+  }
+
+  .audience-lead {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 800px) {
+  .audience-section {
+    padding-top: 70px;
+  }
+
+  .audience-heading h2 {
+    white-space: normal;
+  }
+}
